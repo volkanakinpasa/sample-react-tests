@@ -22,7 +22,7 @@ describe('Counter component', () => {
     expect(screen.getByTestId('count-result').textContent).toBe('-1');
   });
 
-  it('does not show showSomething variable', async () => {
+  it('does not show showSomething variable', () => {
     render(<Counter />);
     const element = screen.getByTestId('show-something');
     expect(element).not.toBeNull();

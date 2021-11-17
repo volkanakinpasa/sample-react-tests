@@ -9,41 +9,38 @@ export default function Counter(props) {
     setShowSomething(true);
   };
 
+  const increase = () => {
+    setCount((c) => c + incrementBy);
+  };
+  const decrease = () => {
+    setCount((c) => c - incrementBy);
+  };
   useEffect(() => {
     fetchData();
   }, []);
 
   return (
     <div>
-      <div>
+      <section>
         <input
           onChange={(val) => {
-            setIncrementBy(val.target.value);
+            if (!isNaN(val.target.value))
+              setIncrementBy(parseInt(val.target.value));
           }}
         />
         <span
           style={{ fontStyle: 'italic' }}
         >{`counting by ${incrementBy}`}</span>
-      </div>
-      <button
-        onClick={() => {
-          setCount(count - incrementBy);
-        }}
-        data-testid="down"
-      >
-        Down
-      </button>
-      <span data-testid="count-result" className="count-result">
-        {count}
-      </span>
-      <button
-        data-testid="up"
-        onClick={() => {
-          setCount(count + incrementBy);
-        }}
-      >
-        Up
-      </button>
+        <button onClick={decrease} data-testid="down">
+          Down
+        </button>
+        <span data-testid="count-result" className="count-result">
+          {count}
+        </span>
+        <button data-testid="up" onClick={increase}>
+          Up
+        </button>
+      </section>
 
       {showSomething && (
         <div data-testid="show-something">

@@ -1,15 +1,14 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Counter from './Counter';
+import App from './App';
 
-export function App() {
+export function Index() {
   return (
     <div className="App">
-      <h1>Welcome to React testing</h1>
-      <Counter initialValue={0} />
+      <App />
     </div>
   );
 }
 
 const rootElement = document.getElementById('root');
-ReactDOM.render(<App />, rootElement);
+ReactDOM.render(<Index />, rootElement);
